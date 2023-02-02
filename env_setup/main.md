@@ -81,7 +81,7 @@ GCC (MinGW) 和 Clang（可选，Winlibs 自带）
 - `wget https://apt.llvm.org/llvm.sh`
   `sudo chmod +x llvm.sh`
   `sudo ./llvm.sh 15`
-  安装 `clang-15`（即最新版 `clang`）
+  安装 `clang-15`（即目前的最新版 `clang`）
 
 ---
 
@@ -91,7 +91,7 @@ GCC (MinGW) 和 Clang（可选，Winlibs 自带）
 - 实际上我们需要 `MinGW-w64`。`MinGW` 停止维护很久了。
 
 [Winlibs](https://winlibs.com/) 是个好东西
-- 在 **Download** 下选择 **UCRT runtime** 中标有 (**LATEST**) 的那个 release 里的 Win64 Zip archive（建议选带有 LLVM/Clang 的）
+- 在 **Download** 下选择 **UCRT runtime** 中标有 **(LATEST)** 的那个 release 里的 Win64 Zip archive（建议选带有 LLVM/Clang 的）
 
 #### 我不识字版：
 
@@ -264,7 +264,7 @@ VSCode 是一个现代的**代码编辑器**
 
 ## 下载、安装 VSCode
 
-- 去[官网](code.visualstudio.com)
+- 去[官网](https://code.visualstudio.com)
 - 挑个好位置安装，例如 `D:\Program Files\Microsoft VS Code`，最好别挤在 C 盘里，**更不要装在桌面**！
 
 ---
@@ -347,7 +347,7 @@ VSCode 有 $N+1$ 套配置：
 ## 配置 VSCode
 
 - 目前为止，以上配置已经足够，不要胡乱粘贴别人的配置文件。
-- 遇到任何问题请首选 [官网](code.visualstudio.com) 和 [StackOverflow](stackoverflow.com)，或者在 Piazza 提问，或单独找TA。
+- 遇到任何问题请首选 [官网](https://code.visualstudio.com) 和 [StackOverflow](https://www.stackoverflow.com)，或者在 Piazza 提问，或单独找TA。
 
 ---
 
@@ -360,3 +360,16 @@ VSCode 有 $N+1$ 套配置：
 
 右键 - `Format Document`（快捷键 `Alt`+`Shift`+`f`）可以格式化整个文件。
 - 我们已经在全局设置了 Format On Type 和 Format On Save
+
+---
+
+## 关于我的幻灯片
+
+用 Markdown 就能制作幻灯片？你需要 Marp for VSCode。
+
+- 本学期我的习题课的所有材料在 https://github.com/GKxxQAQ/CS100-recitations-spring2023 ，但我可能不会上传 pdf 文件。
+- VSCode 安装 "Marp for VS Code" 插件，然后打开我的 `.md` 文件，它就会自动识别为幻灯片。
+  ![](img/marp.png)
+- 预览和导出：![](img/marp_view_export.png)
+
+（某些效果更复杂的幻灯片不排除回归 $\LaTeX$ 的可能）
