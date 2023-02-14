@@ -1,5 +1,6 @@
 ---
 marp: true
+math: mathjax
 ---
 
 # CS100 Recitation 1
@@ -12,7 +13,7 @@ GKxx
 
 - C/C++ 语言标准
 - 基本数据类型
-- main 函数
+- `main` 函数
 - 运算符和表达式
 - 说了 `Hello, world` 之后呢？
 
@@ -167,7 +168,7 @@ GKxx
   - 不带 `unsigned` 的都是带符号类型，`signed` 可以省略。
   - **例外：`char` 和 `signed char` 不是同一个类型，和 `unsigned char` 也不是。**
 - `int` 的大小（表示范围）是多少？`long` 呢？
-  - **implementation-defined**!
+  - [**implementation-defined**](https://en.cppreference.com/w/c/language/behavior)!
   - `short` 和 `int` 至少 16 位；`long` 至少 32 位；`long long` 至少 64 位。
   - `1 == sizeof(char) <= sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)`
   - https://en.cppreference.com/w/c/language/arithmetic_types
@@ -209,7 +210,7 @@ GKxx
 
 ---
 
-![](img/unicode.png)
+[![](img/unicode.png)](https://www.bilibili.com/video/BV1NE411h7hb?p=9&vd_source=7940495b5667750a71bfa10a4c6eb2d9)
 
 ---
 
@@ -223,5 +224,145 @@ GKxx
 
 ---
 
-# main 函数
+# `main` 函数
 
+---
+
+## 初识函数
+
+一个函数：
+- 接受一些**参数** (parameters)，
+- 执行一些语句，称为**函数体** (function body)，
+- 返回一个结果，称为**返回值** (return-value)。
+
+例：数学函数 $f(x)=x^2,x\in\mathbb R$：
+
+```c
+double f(double x) {
+  return x * x;
+}
+```
+
+---
+
+## 初识函数
+
+例：数学函数 $f(x)=x^2,x\in\mathbb R$：
+
+```c
+double f(double x) {
+  return x * x;
+}
+```
+
+但函数体完全可以执行更复杂的操作：
+
+```c
+double f(double x) {
+  printf("function 'f' is called with x = %lf\n", x);
+  return x * x;
+}
+```
+
+---
+
+## `main` 函数
+
+C 程序的 entrypoint，具有如下三种形式之一：
+
+- ```c
+  int main(void)
+  ```
+- ``` c
+  int main(int argc, char **argv)
+  ```
+- Another implementation-defined signature.
+
+对于第三种，一个典型的例子是许多操作系统支持的
+```c
+int main(int argc, char **argv, char **envp)
+```
+其中 `envp` 用来传递环境变量。
+
+https://en.cppreference.com/w/c/language/main_function
+
+---
+
+## `main` 函数
+
+目前我们只需了解 `int main(void)`，或者等价地，`int main()`。
+
+- 这个函数不接受任何参数。
+- `main` 函数应当返回 `int`。如果程序正常退出，返回 `0`；否则返回一个非零值。
+- `return 0;` 语句无需显式地写出。若控制流到达函数体末尾而没有遇到一条 `return` 语句，则等价于 `return 0;`。
+
+<a align="center">
+  <img src="img/exit_-1.png", height=100/>
+</a>
+
+---
+
+## `main` 函数
+
+试一试：`void main() {}` 会发生什么？
+
+> The definition `void main()` is not and never has been C++, nor has it even been C. - Bjarne Stroustrup
+
+（我当年 CS100 期中考试的故事）
+
+---
+
+## `main` 函数
+
+> The definition `void main()` is not and never has been C++, nor has it even been C. - Bjarne Stroustrup
+
+`f(void)` 和 `f()` 都表示不接受任何参数，但在很久很久以前不是这样的。
+
+- 曾经的 C 语言中，`f()` 表示接受任意多个任意类型的参数。
+- Stroustrup 发明 C-with-Classes 时引入了 `f(void)` 这个写法，用来表示不接受参数的函数。
+- `f(void)` 不够优雅，`f()` 不符合直觉。
+
+---
+
+## `main` 函数
+
+你可能看过某些人省去返回值类型：
+
+```c
+main() {
+  // ...
+}
+```
+
+在 C99 以前，函数的返回值类型可以不显式地指出，这时这个返回值类型默认为 `int`。**但 C99 取消了这一规则**。
+
+---
+
+## 练习
+
+定义函数 `f` 来计算 $f(x)=x^2,x\in\mathbb Z$；输入一个整数，调用 `f` 计算其平方并输出。
+
+---
+
+## 练习
+
+定义函数 `f` 来计算 $f(x)=x^2,x\in\mathbb Z$；输入一个整数，调用 `f` 计算其平方并输出。
+
+```c
+#include <stdio.h>
+
+int f(int x) {
+  return x * x;
+}
+
+int main() {
+  int n;
+  scanf("%d", &n);
+  printf("%d\n", f(n));
+  return 0;
+}
+```
+
+注意：**输入**$\neq$**传递参数**，**输出**$\neq$**返回**。
+
+---
