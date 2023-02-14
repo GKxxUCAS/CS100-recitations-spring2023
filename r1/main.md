@@ -425,3 +425,83 @@ int main() {
 - **学会使用这样的运算符，让代码变得简洁、清晰**。
   - **简洁即美德**。
 
+---
+
+# 说了 `Hello, world` 之后呢？
+
+---
+
+## 说了 `Hello, world` 之后呢？
+
+一个比 `Hello, world` 稍微复杂一丁点儿的是“A+B Problem”：
+
+```c
+#include <stdio.h>
+
+int main() {
+  int a, b;
+  scanf("%d%d", &a, &b);
+  printf("%d\n", a + b);
+  return 0;
+}
+```
+
+---
+
+## A+B Problem
+
+约定输入格式：两行，每行一个整数，分别表示 `a` 和 `b`。
+
+- `scanf("%d\n%d\n", &a, &b)` 会发生什么？试一试。
+
+---
+
+## A+B Problem
+
+约定输入格式：两行，每行一个整数，分别表示 `a` 和 `b`。
+
+- `scanf("%d\n%d\n", &a, &b)` 会卡住，**直到你输入了一个非空白字符为止**。
+- 看看标准：https://en.cppreference.com/w/c/io/fscanf
+  
+  > whitespace characters: any single whitespace character in the format string **consumes all available consecutive whitespace characters** from the input (determined as if by calling isspace in a loop). Note that **there is no difference** between `"\n"`, `" "`, `"\t\t"`, or other whitespace in the format string.
+- whitespace character: “空白字符”，包括空格、换行、回车、制表等。
+
+---
+
+## A+B Problem
+
+约定输入格式：两行，每行一个整数，分别表示 `a` 和 `b`。
+
+- `scanf("%d%d", &a, &b)` 可以吗？试一试。
+
+---
+
+## A+B Problem
+
+约定输入格式：两行，每行一个整数，分别表示 `a` 和 `b`。
+
+- `scanf("%d%d", &a, &b)` 可以。
+- 中间的换行符不写也可以？看看标准：
+  
+  > `"%d"` matches a decimal integer.
+
+  > The format of the number is the same as expected by `strtol` with the value 10 for the base argument.
+  
+- `strtol` 是什么鬼？[点进去看看](https://en.cppreference.com/w/c/string/byte/strtol)：
+  
+  > Interprets an integer value in a byte string pointed to by str.
+
+  > **Discards any whitespace characters** (as identified by calling `isspace`) until the first non-whitespace character is found, then...
+
+---
+
+## 说了 `Hello, world` 之后呢？
+
+理论与实践结合：
+
+- 理论：认准官方文档、手册。只需要高考英语及格的水平和亿点点耐心，你可以得到比任何教程、博客、题解、教材都要权威、准确的解答。
+  - 英语水平越好，对耐心的要求越低。
+- 实践：**计算机科学是一门实践科学**，需要大胆地尝试、实验。
+  - `long` 的范围是多大？
+  - 函数里能调用自身吗？
+  - 如果 `f` 是一个无参函数，调用它的方式是 `f;` 还是 `f();`？
