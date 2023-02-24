@@ -1,0 +1,22 @@
+\documentclass[tikz, convert={outext=.png}]{standalone}
+
+% use xelatex
+\usepackage{fontspec}
+\usepackage{pgffor}
+
+\setmainfont{Ubuntu Mono}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \node at (-2.5, 0) {Type a[4][3]};
+  \foreach \i in {0, 1, 2, 3} {
+    \node[rectangle, draw, minimum width = 2.1cm, minimum height = 0.7cm, double] (r\i) at (\i * 2.1, 0) {};
+    \node at (\i * 2.1, -0.7) {a[\i]};
+    \foreach \j in {1, 2} {
+      \draw[dashed] (\i * 2.1 + \j * 0.7 - 1.05, -0.35) -- (\i * 2.1 + \j * 0.7 - 1.05, 0.35);
+    }
+  }
+\end{tikzpicture}
+
+\end{document}
