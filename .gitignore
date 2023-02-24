@@ -2,3 +2,5 @@
 *.pdf
 tmp
 *.mp4
+*.aux
+*.log
