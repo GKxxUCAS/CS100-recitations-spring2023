@@ -16,7 +16,7 @@ class Message {
   void moveFolders(Message &);
 
  public:
-  Message(std::string contents) : m_contents{std::move(contents)} {}
+  explicit Message(std::string contents) : m_contents{std::move(contents)} {}
   Message(const Message &other)
       : m_contents{other.m_contents}, m_folders{other.m_folders} {
     addToAll();
