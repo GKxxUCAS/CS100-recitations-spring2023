@@ -4,3 +4,5 @@ tmp
 *.mp4
 *.aux
 *.log
+*.zip
+*.tar
